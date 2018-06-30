@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'MV Gestão',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>MV</b> Gestão Comércio',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>Gestão</b>LT',
 
     /*
     |--------------------------------------------------------------------------

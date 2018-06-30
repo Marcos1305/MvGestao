@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
+Auth::routes();
+Route::get('/', function(){
+    return redirect()->route('admin.index');
+});
+Route::get('/login', 'HomeController@login')->name('login');
+Route::post('login', 'HomeController@postLogin')->name('login.post');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+    route::get('/', 'AdminController@index')->name('admin.index');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

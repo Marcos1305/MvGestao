@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
-
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     @if(config('adminlte.plugins.select2'))
         <!-- Select2 -->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
@@ -63,5 +63,8 @@
 
 @yield('adminlte_js')
 
+    <footer class="container-fluid" style="background-color: #3C8DBC; ">
+        <div class="container" style="padding: 10px 0 10px 0; text-align: center; color: #FFFFFF;" >Sistema desenvolvido por  <a style="color: #FFFFFF"href="https://github.com/Marcos1305"><b>Marcos Vinicius</b>.</a></div>
+    </footer>
 </body>
 </html>

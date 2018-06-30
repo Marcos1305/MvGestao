@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Funcionario;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -11,18 +11,23 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function login()
     {
-        return view('home');
+        return view('auth.login');
+    }
+
+    public function postLogin(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if(Auth::attempt($credentials))
+            return redirect()->route('admin.index');
+
+        return redirect()->route('login')->with('error', 'Usuário ou senha inválido');
     }
 }
