@@ -19,6 +19,7 @@ class HomeController extends Controller
      */
     public function login()
     {
+        // echo bcrypt('admin');
         return view('auth.login');
     }
 

@@ -11,7 +11,7 @@
         <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Suas Vendas</span>
-          <span class="info-box-number">{{$vendas}}</span>
+          <span class="info-box-number">{{$vendasFuncLogado}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -31,7 +31,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <ul class="products-list product-list-in-box">
-                @foreach ($produtos as $produto )
+                @foreach ($ultimosProdutos as $produto )
                     <li class="item">
                         <div class="product-info">
                         <a href="javascript:void(0)" class="product-title">{{$produto->nome}}
@@ -100,15 +100,19 @@
                         <div class="modal-body">
                           <table class="table table-hover table-bordered table-responsive">
                             <thead>
+                                <th>Código de Barra</th>
                                 <th>Nome do Produto</th>
                                 <th>Descricao</th>
+                                <th>Preço</th>
                             </thead>
                             <tbody>
-                                @foreach ($ultimasVendas as $vendas)
-                                <tr>
-                                    <td>{{$vendas->produtos->nome}}</td>
-                                    <td>{{$vendas->produtos->descricao}}</td>
-                                </tr>
+                                @foreach ($ultimasVendas as $venda)
+                                    <tr>
+                                        <td>{{$venda->produtos()->get()->first()->CodBarra}}</td>
+                                        <td>{{$venda->produtos()->get()->first()->nome}}</td>
+                                        <td>{{$venda->produtos()->get()->first()->descricao}}</td>
+                                        <td>{{$venda->produtos()->get()->first()->preco}}</td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                           </table>

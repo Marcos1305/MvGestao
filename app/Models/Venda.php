@@ -10,8 +10,19 @@ class Venda extends Model
     {
         return $this->belongsTo(Funcionario::class);
     }
+
     public function produtos()
     {
-        return $this->hasMany(Produto::class);
+        return $this->belongsToMany(Produto::class);
+    }
+
+    public function vendasFuncLogado()
+    {
+        return count(auth()->user()->vendas);
+    }
+
+    public function ultimasVendas()
+    {
+        return $this->orderBy('id', 'desc')->take(4)->get();
     }
 }
