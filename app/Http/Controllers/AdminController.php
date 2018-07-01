@@ -20,7 +20,8 @@ class AdminController extends Controller
         //Ultimas vendas Geral
         $ultimasVendas = $vendas->ultimasVendas();
 
+        $total = 0;
 
-        return view('Admin.home', compact('vendasFuncLogado', 'ultimosProdutos', 'ultimasVendas', 'produtosUltimasVendas'));
+        return view('Admin.home', compact('vendasFuncLogado', 'ultimosProdutos', 'ultimasVendas', 'produtosUltimasVendas', 'total'));
     }
 }

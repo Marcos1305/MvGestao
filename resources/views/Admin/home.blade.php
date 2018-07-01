@@ -74,13 +74,15 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($ultimasVendas as $venda )
+                  @forelse ($ultimasVendas as $venda)
                     <tr>
                         <td>{{$venda->id}}</td>
-                        <td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProdutos">Produtos</a></td>
+                        <td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProdutos{{$venda->id}}">Produtos</a></td>
                         <td>{{$venda->funcionario->name}}</td>
                     </tr>
-                  @endforeach
+                    @empty
+                        <p>Nenhuma venda registrada!</p>
+                  @endforelse
                   </tbody>
                 </table>
               </div>
@@ -88,46 +90,49 @@
             </div>
             {{-- MODAL PRODUTOS --}}
             <!-- Modal -->
-            <div class="modal fade" id="modalProdutos" tabindex="-1" role="dialog" aria-labelledby="modalProdutos" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalProdutos">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                          <table class="table table-hover table-bordered table-responsive">
-                            <thead>
-                                <th>Código de Barra</th>
-                                <th>Nome do Produto</th>
-                                <th>Descricao</th>
-                                <th>Preço</th>
-                            </thead>
-                            <tbody>
-                                @foreach ($ultimasVendas as $venda)
+            @forelse($ultimasVendas as $venda)
+            <div class="modal fade" id="modalProdutos{{$venda->id}}" tabindex="-1" role="dialog" aria-labelledby="modalProdutos" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalProdutos">Produtos</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                              <table class="table table-hover table-bordered table-responsive">
+                                <thead>
+                                    <th>Código de Barra</th>
+                                    <th>Nome do Produto</th>
+                                    <th>Descrição</th>
+                                    <th>Preço</th>
+                                </thead>
+                                <tbody>
+                                    @foreach($venda->produtos as $produtos)
                                     <tr>
-                                        <td>{{$venda->produtos()->get()->first()->CodBarra}}</td>
-                                        <td>{{$venda->produtos()->get()->first()->nome}}</td>
-                                        <td>{{$venda->produtos()->get()->first()->descricao}}</td>
-                                        <td>{{$venda->produtos()->get()->first()->preco}}</td>
+                                        <td>{{$produtos->CodBarra}}</td>
+                                        <td>{{$produtos->nome}}</td>
+                                        <td>{{$produtos->descricao}}</td>
+                                        <td>{{$produtos->preco}}</td>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                                    @endforeach
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @empty
+                <p>Nenhum produto!</p>
+            @endforelse
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nova Venda</a>
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Todas as Vendas</a>
             </div>
             <!-- /.box-footer -->
           </div>
