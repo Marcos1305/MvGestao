@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -123,8 +123,8 @@ return [
         ],
         'ACCOUNT SETTINGS',
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
+            'text' => 'Meus dados',
+            'route' => 'func.profile',
             'icon' => 'user',
         ],
         [

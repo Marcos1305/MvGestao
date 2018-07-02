@@ -24,4 +24,10 @@ class AdminController extends Controller
 
         return view('Admin.home', compact('vendasFuncLogado', 'ultimosProdutos', 'ultimasVendas', 'produtosUltimasVendas', 'total'));
     }
+
+    public function profile()
+    {
+        $funcionario = auth()->user()->get()->first();
+        return view('Admin.func.profile',compact('funcionario'));
+    }
 }

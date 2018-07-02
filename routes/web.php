@@ -20,5 +20,6 @@ Route::post('login', 'HomeController@postLogin')->name('login.post');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     route::get('/', 'AdminController@index')->name('admin.index');
+    route::get('/profile', 'AdminController@profile')->name('func.profile');
 });
 
