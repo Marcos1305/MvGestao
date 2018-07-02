@@ -4,7 +4,7 @@
         justify-content: center;
         justify-items: center;
     }
-    label,input{
+    input{
         text-align: center;
     }
 </style>

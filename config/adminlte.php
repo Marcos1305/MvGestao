@@ -108,18 +108,11 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'Home',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Painel de Controle',
+            'icon'        => 'dashboard',
+            'route'       => 'admin.index'
         ],
         'ACCOUNT SETTINGS',
         [
@@ -128,8 +121,8 @@ return [
             'icon' => 'user',
         ],
         [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
+            'text' => 'Alterar senha',
+            'route'  => 'func.senha',
             'icon' => 'lock',
         ],
         [

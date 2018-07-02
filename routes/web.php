@@ -15,11 +15,14 @@ Auth::routes();
 Route::get('/', function(){
     return redirect()->route('admin.index');
 });
+
 Route::get('/login', 'HomeController@login')->name('login');
 Route::post('login', 'HomeController@postLogin')->name('login.post');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     route::get('/', 'AdminController@index')->name('admin.index');
-    route::get('/profile', 'AdminController@profile')->name('func.profile');
+    route::get('/profile', 'FuncionarioController@profile')->name('func.profile');
+    Route::get('/nova-senha', 'FuncionarioController@novaSenha')->name('func.senha');
+    Route::post('/salvar-senha', 'FuncionarioController@salvarsenha')->name('func.salvarsenha');
 });
 
