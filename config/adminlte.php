@@ -114,7 +114,55 @@ return [
             'icon'        => 'dashboard',
             'route'       => 'admin.index'
         ],
-        'ACCOUNT SETTINGS',
+        'Gestão Loja',
+        [
+            'text'       => 'Produtos',
+            'icon'       =>  'product-hunt',
+            'submenu'    => [
+                [
+                    'text'  =>  'Adicionar Produto',
+                    'icon'  =>  'plus-circle',
+                    'route' =>  'novo.produto'
+                ],
+                [
+                    'text'  =>  'Listar todos os produtos',
+                    'icon'  =>  'th-list'
+                ]
+            ],
+        ],
+        [
+            'text'       => 'Categorias',
+            'icon'       => 'chevron-circle-right',
+            'submenu'    => [
+                [
+                    'text'  => 'Adicionar nova categoria',
+                    'icon'  => 'plus-circle'
+                ],
+                [
+                    'text'  => 'Listar todas categorias',
+                    'icon'  => 'th-list'
+                ]
+            ]
+        ],
+        [
+            'text'       => 'Vendas',
+            'icon'       => 'shopping-cart',
+            'submenu'    =>[
+                [
+                    'text' => 'Registrar nova venda',
+                    'icon' => 'cart-plus',
+                ],
+                [
+                    'text' => 'Listar suas vendas',
+                    'icon' => 'opencart'
+                ],
+                [
+                    'text' => 'Listar todas as vendas',
+                    'icon' =>  'caret-right'
+                ]
+            ]
+        ],
+        'Funcionario',
         [
             'text' => 'Meus dados',
             'route' => 'func.profile',
@@ -126,8 +174,8 @@ return [
             'icon' => 'lock',
         ],
         [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => 'Gestão',
+            'icon'    => 'users',
             'submenu' => [
                 [
                     'text' => 'Level One',
@@ -162,19 +210,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
         ],
     ],
 

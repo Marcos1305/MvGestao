@@ -24,5 +24,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     route::get('/profile', 'FuncionarioController@profile')->name('func.profile');
     Route::get('/nova-senha', 'FuncionarioController@novaSenha')->name('func.senha');
     Route::post('/salvar-senha', 'FuncionarioController@salvarsenha')->name('func.salvarsenha');
+
+    Route::get('/novo-produto', 'ProdutoController@novoProduto')->name('novo.produto');
+    Route::post('/novo-produto', 'ProdutoController@salvarProduto')->name('novo.produto');
 });
 
