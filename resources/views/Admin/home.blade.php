@@ -6,6 +6,13 @@
     <h1>Bem Vindo, {{auth()->user()->name}}.</h1><span class="h5">Logado como {{auth()->user()->cargo}}.</span>
 @stop
 
+@section('style')
+    <style>
+        .tag-product{
+            margin: 0 0.3rem;
+        }
+    </style>
+@stop
 @section('content')
     <div class="info-box">
         <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
@@ -25,7 +32,6 @@
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
             <!-- /.box-header -->
@@ -35,7 +41,10 @@
                     <li class="item">
                         <div class="product-info">
                         <a href="javascript:void(0)" class="product-title">{{$produto->nome}}
-                        <span class="label label-{{$produto->preco > 500 ? 'warning' : 'success'}} pull-right">{{$produto->preco}}</span></a>
+                        <span class="label label-{{$produto->preco > 500 ? 'warning' : 'success'}} pull-right">R$ {{$produto->preco}}</span></a>
+                        @foreach ($produto->departamentos as $departamento)
+                            <span class="label label-primary pull-right tag-product">{{$departamento->Nome}}</span>
+                        @endforeach
                             <span class="product-description">
                                 {{$produto->descricao}}
                             </span>
@@ -127,7 +136,6 @@
                     </div>
                 </div>
             @empty
-                <p>Nenhum produto!</p>
             @endforelse
             <!-- /.box-body -->
             <div class="box-footer clearfix">

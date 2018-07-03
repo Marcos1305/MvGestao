@@ -126,7 +126,8 @@ return [
                 ],
                 [
                     'text'  =>  'Listar todos os produtos',
-                    'icon'  =>  'th-list'
+                    'icon'  =>  'th-list',
+                    'route' =>  'lista.produtos'
                 ]
             ],
         ],
@@ -177,6 +178,7 @@ return [
         [
             'text'    => 'Gestão',
             'icon'    => 'users',
+            'can'     => 'admin',
             'submenu' => [
                 [
                     'text' => 'Level One',

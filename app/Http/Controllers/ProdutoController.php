@@ -29,4 +29,10 @@ class ProdutoController extends Controller
             return redirect()->back()->with('success', "Produto {$request->nomeProduto} inserido com sucesso!");
     }
 
+    public function listaProdutos(Produto $produto)
+    {
+        $produtos = $produto->all();
+        return view('admin.produtos.lista', compact('produtos'));
+    }
+
 }
