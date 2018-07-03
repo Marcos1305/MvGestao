@@ -9,6 +9,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
+    @yield('style')
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
@@ -19,13 +20,12 @@
         <!-- Select2 -->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
     @endif
-
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
     @if(config('adminlte.plugins.datatables'))
-        <!-- DataTables -->
-        <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     @endif
 
     @yield('adminlte_css')
@@ -45,6 +45,9 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.maskmoney.min.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
 @if(config('adminlte.plugins.select2'))
     <!-- Select2 -->
@@ -66,5 +69,6 @@
     <footer class="container-fluid" style="background-color: #3C8DBC; ">
         <div class="container" style="padding: 10px 0 10px 0; text-align: center; color: #FFFFFF;" >Sistema desenvolvido por  <a style="color: #FFFFFF"href="https://github.com/Marcos1305"><b>Marcos Vinicius</b>.</a></div>
     </footer>
+    @yield('extraJS')
 </body>
 </html>

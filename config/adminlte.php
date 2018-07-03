@@ -131,15 +131,16 @@ return [
             ],
         ],
         [
-            'text'       => 'Categorias',
+            'text'       => 'Departamentos',
             'icon'       => 'chevron-circle-right',
             'submenu'    => [
                 [
-                    'text'  => 'Adicionar nova categoria',
-                    'icon'  => 'plus-circle'
+                    'text'  => 'Novo Departamento',
+                    'icon'  => 'plus-circle',
+                    'route' =>  'novo.departamento'
                 ],
                 [
-                    'text'  => 'Listar todas categorias',
+                    'text'  => 'Listar todos departamentos',
                     'icon'  => 'th-list'
                 ]
             ]

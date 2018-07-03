@@ -16,8 +16,6 @@ class CreateDepartamentosTable extends Migration
         Schema::create('departamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Nome', 45);
-            $table->integer('produto_id')->unsigned();
-            $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');
             $table->timestamps();
         });
     }

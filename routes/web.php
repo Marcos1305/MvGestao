@@ -27,5 +27,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::get('/novo-produto', 'ProdutoController@novoProduto')->name('novo.produto');
     Route::post('/novo-produto', 'ProdutoController@salvarProduto')->name('novo.produto');
+
+    Route::get('/novo-departamento', 'DepartamentoController@novoDepartamento')->name('novo.departamento');
+    Route::post('/novo-departamento', 'DepartamentoController@salvarDepartamento')->name('novo.departamento');
+
 });
 
