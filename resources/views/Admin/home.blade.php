@@ -10,22 +10,24 @@
     <style>
         .tag-product{
             margin: 0 0.3rem;
+
         }
     </style>
 @stop
 @section('content')
-    <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Suas Vendas</span>
-          <span class="info-box-number">{{$vendasFuncLogado}}</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
+<div class="info-box">
+    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+    <div class="info-box-content">
+        <span class="info-box-text">Suas Vendas</span>
+        <span class="info-box-number">{{$vendasFuncLogado}}</span>
+    </div>
+    <!-- /.info-box-content -->
+</div>
 
-      {{-- Ultimos Produtos --}}
-      <div class="row">
-          <div class="col-md-6">
+{{-- Ultimos Produtos --}}
+    <div class="row">
+        <div class="col-md-6">
+            @include('Admin.layouts.errors')
             <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Produtos adicionados recentemente.</h3>
@@ -55,7 +57,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">Ver todos os produtos</a>
+              <a href="{{route('lista.produtos')}}" class="uppercase">Ver todos os produtos</a>
             </div>
             <!-- /.box-footer -->
              </div>

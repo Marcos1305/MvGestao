@@ -20,6 +20,9 @@
         }
 
         @media screen and (max-width: 767px){
+            .btn{
+            margin-top: 0.3rem;
+            }
             .tabela {
             max-width: 100%;
             overflow: scroll
@@ -30,7 +33,10 @@
 @section('content_header')
     <div class="container">
         <div class="row text-center">
-            <h2>Lista de Produtos</h2>
+                <h2>Lista de Produtos</h2>
+        </div>
+        <div class="row text-center">
+             @include('Admin.layouts.errors')
         </div>
     </div>
 @stop
@@ -40,7 +46,6 @@
             <div class="col-sm-12 tabela">
                 <table class="table table-bordered table-hover table-responsive">
                     <thead>
-                        <td>ID</td>
                         <td>Código</td>
                         <td>Nome</td>
                         <td>Descrição</td>
@@ -53,22 +58,21 @@
                     <tbody>
                         @foreach ($produtos as $produto)
                             <tr>
-                                <td>{{$produto->id}}</td>
                                 <td>{{$produto->CodBarra}}</td>
                                 <td>{{$produto->nome}}</td>
                                 <td>{{$produto->descricao}}</td>
                                 <td>R$ {{$produto->preco}}</td>
                                 <td>
-                                    @can('admin')
-                                        @foreach ($produto->departamentos as $departamento)
-                                            <span class="label label-primary pull-right tag-product">{{$departamento->Nome}}</span>
-                                        @endforeach
-                                    @endcan
+                                    @foreach ($produto->departamentos as $departamento)
+                                        <span class="label label-primary pull-right tag-product">{{$departamento->Nome}}</span>
+                                    @endforeach
                                 </td>
-                                <td>
-                                    <a class="btn btn-warning btn-sm">Editar Produto</a>
-                                    <a class="btn btn-danger btn-sm">Excluir Produto</a>
-                                </td>
+                                @can('admin')
+                                    <td>
+                                        <a href="{{route('editar.produtos', $produto->id)}}"class="btn btn-warning btn-sm">Editar Produto</a>
+                                        <a href="{{route('excluir.produtos', $produto->id)}}" onClick="return confirm('Tem certeza que desejar excluir esse produto?')" class="btn btn-danger btn-sm">Excluir Produto</a>
+                                    </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>

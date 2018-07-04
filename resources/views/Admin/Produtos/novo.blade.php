@@ -19,13 +19,21 @@
     }
     .btn-tag{
         margin: 0 0.5em;
+        margin-top: 0.3rem;
     }
 </style>
 @stop
 @section('content_header')
-    <div class="container text-center">
-        <h2>Adicionar Produto</h2>
-    </div>
+    @if(isset($produto))
+         <div class="container text-center">
+            <h2>Datalhes produto <strong>{{$produto->nome}}</strong></h2>
+        </div>
+    @else
+        <div class="container text-center">
+            <h2>Adicionar Produto</h2>
+        </div>
+    @endif
+
 @stop
 
 @section('content')
@@ -36,29 +44,34 @@
             </div>
         </div>
         <div class="row">
-            <form action="{{route('novo.produto')}}" method="POST" id="form" class="col-md-6">
+            @if(isset($produto))
+                <form action="{{route('update.produtos')}}" method="POST" id="form" class="col-md-6">
+                <input type="hidden" name="produto_id" value="{{$produto->id}}">
+            @else
+                <form action="{{route('novo.produto')}}" method="POST" id="form" class="col-md-6">
+            @endif
                 @csrf
                 <div class="form-group ">
                     <label for="nomeProduto">Nome do Produto</label>
-                    <input type="text" name="nomeProduto" id="" value="{{old('nomeProduto')}} "class="form-control">
+                    <input type="text" name="nomeProduto" id="" value="{{$produto->nome or old('nomeProduto')}} "class="form-control">
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label for="codigoProduto">Código</label>
                         <div class="form-group">
-                            <input type="number" name="codigoProduto" id="" value="{{old('codigoProduto')}}" class="form-control">
+                            <input type="number" name="codigoProduto" id="" value="{{$produto->CodBarra or old('codigoProduto')}}" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="precoProduto">Preço</label>
-                            <input type="text" name="precoProduto" value="{{old('precoProduto')}} " class="form-control" id="precoProduto">
+                            <input type="text" name="precoProduto" value="{{$produto->preco or old('precoProduto')}} " class="form-control" id="precoProduto">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="descricaoProduto">Descrição</label>
-                    <textarea  class="form-control" id="descricaoProduto" name="descricaoProduto">{{old('descricaoProduto')}}</textarea>
+                    <textarea  class="form-control" id="descricaoProduto" name="descricaoProduto">{{$produto->descricao or old('descricaoProduto')}}</textarea>
                 </div>
                 <div class="row">
                     <div class="form-group col-xs-8">
@@ -78,7 +91,7 @@
                     <div class="col-xs-12 box-tags" data-js="categoria-box">
                     </div>
                 </div>
-                <button type="submit" data-js="form-submit" class="btn btn-primary btn-lg btn-block ">Adicionar Produto</button>
+                <button type="submit" data-js="form-submit" class="btn btn-primary btn-lg btn-block ">{{isset($produto) ? 'Confirmar alterações' : 'Adicionar Produto'}}</button>
             </form>
         </div>
     </div>

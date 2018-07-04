@@ -4,7 +4,7 @@
     var $btn = document.querySelector('[data-js="btn-categoria"]');
     var $categoria_submit = document.querySelector('[data-js="categoria_produto"]');
     var $idsDepartamentos = [];
-
+    var $class = ['primary', 'warning', 'info', 'success'];
     $btn.addEventListener('click', function(){
         addCategoryBox($select.options[$select.selectedIndex]);
         $idsDepartamentos.push($select.options[$select.selectedIndex].value);
@@ -17,7 +17,8 @@
         $tag.addEventListener('click', (function(){
             removeTag($tag);
         }).bind(this));
-        $tag.classList.add('btn', 'btn-info', 'btn-tag');
+        $classbtn = $class[Math.floor(Math.random()*$class.length)];
+        $tag.classList.add('btn','btn-tag','btn-'+$classbtn);
         $categoriaBox.appendChild($tag);
     }
 
