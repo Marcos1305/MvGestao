@@ -142,7 +142,8 @@ return [
                 ],
                 [
                     'text'  => 'Listar todos departamentos',
-                    'icon'  => 'th-list'
+                    'icon'  => 'th-list',
+                    'route' => 'lista.departamento',
                 ]
             ]
         ],

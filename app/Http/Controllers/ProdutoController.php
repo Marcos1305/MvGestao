@@ -27,10 +27,11 @@ class ProdutoController extends Controller
             return redirect()->back()->with('success', "Produto {$request->nomeProduto} inserido com sucesso!");
     }
 
-    public function listaProdutos(Produto $produto)
+    public function listaProdutos(Produto $produto, Departamento $departamento)
     {
         $produtos = $produto->all();
-        return view('admin.produtos.lista', compact('produtos'));
+        $departamentos = $departamento->all();
+        return view('admin.produtos.lista', compact('produtos', 'departamentos'));
     }
 
     public function editarProduto(Produto $produto, $id, Departamento $departamento)
@@ -66,6 +67,13 @@ class ProdutoController extends Controller
         $delete = $produtoDel->delete();
         if($delete)
             return redirect()->back()->with('error', 'Sucesso ao excluir produto!');
+    }
+    public function produtoBusca(Request $request, Departamento $departamento)
+    {
+        $departamentos = $departamento->all();
+        $departamento = $departamento->find($request->departamento);
+        $produtos = $departamento->produtos;
+        return view('admin.produtos.lista', compact('produtos', 'departamentos'));
     }
 
 }

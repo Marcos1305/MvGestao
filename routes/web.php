@@ -25,15 +25,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/nova-senha', 'FuncionarioController@novaSenha')->name('func.senha');
     Route::post('/salvar-senha', 'FuncionarioController@salvarsenha')->name('func.salvarsenha');
 
+    //Produtos
     Route::get('/novo-produto', 'ProdutoController@novoProduto')->name('novo.produto');
     Route::post('/novo-produto', 'ProdutoController@salvarProduto')->name('novo.produto');
     Route::get('/lista-produtos', 'ProdutoController@listaProdutos')->name('lista.produtos');
     Route::get('/produto/{id}/editar', 'ProdutoController@editarProduto')->name('editar.produtos');
     Route::get('/produto/{id}/excluir', 'ProdutoController@excluirProduto')->name('excluir.produtos');
     Route::post('/produto/update', 'ProdutoController@updateProduto')->name('update.produtos');
+    Route::post('/produto/busca/', 'ProdutoController@produtoBusca')->name('busca.produtos');
 
+    //Departamentos
     Route::get('/novo-departamento', 'DepartamentoController@novoDepartamento')->name('novo.departamento');
     Route::post('/novo-departamento', 'DepartamentoController@salvarDepartamento')->name('novo.departamento');
+    Route::get('/lista-departamentos', 'DepartamentoController@listaDepartamento')->name('lista.departamento');
+    Route::get('/editar-departamento/{id}', 'DepartamentoController@editarDepartamento')->name('editar.departamento');
+    Route::post('/update-departamento', 'DepartamentoController@updateDepartamento')->name('update.departamento');
+    Route::get('/delet-departamento/{id}', 'DepartamentoController@deleteDepartamento')->name('delete.departamento');
 
 });
 

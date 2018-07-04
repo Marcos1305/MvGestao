@@ -18,7 +18,13 @@
         .tag-product{
             margin: 0 0.3rem;
         }
-
+        .search{
+            justify-content: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        .no-gutters{
+            padding: 0 !important;
+        }
         @media screen and (max-width: 767px){
             .btn{
             margin-top: 0.3rem;
@@ -42,6 +48,24 @@
 @stop
 @section('content')
     <div class="container">
+        <form action="{{route('busca.produtos')}}" method="post">
+            @csrf
+            <h4>Listar por departamento</h4>
+            <div class="row search ">
+                <div class="col-xs-12 col-md-5 no-gutters">
+                    <div class="col-xs-7" style="padding-let: 0;">
+                        <select class="form-control"name="departamento" id="">
+                            @foreach ($departamentos as $departamento)
+                                <option value="{{$departamento->id}}">{{$departamento->Nome}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-xs-5 no-gutters">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-sm-12 tabela">
                 <table class="table table-bordered table-hover table-responsive">

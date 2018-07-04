@@ -30,7 +30,7 @@
         });
         $categoria_submit.value = $idsDepartamentos;
         tag.remove();
-        tag.classList.remove('btn', 'btn-info', 'btn-tag');
+        tag.removeAttribute("class");
         $select.appendChild(tag.cloneNode(true));
     }
 

@@ -8,7 +8,7 @@ class FuncionarioController extends Controller
 {
     public function profile()
     {
-        $funcionario = auth()->user()->get()->first();
+        $funcionario = auth()->user();
         return view('admin.func.profile',compact('funcionario'));
     }
 
