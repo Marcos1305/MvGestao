@@ -25,6 +25,10 @@
         .no-gutters{
             padding: 0 !important;
         }
+        thead{
+            background-color: rgba(34, 45, 50, .2);
+            color: black;
+        }
         @media screen and (max-width: 767px){
             .btn{
             margin-top: 0.3rem;
@@ -53,7 +57,7 @@
             <h4>Listar por departamento</h4>
             <div class="row search ">
                 <div class="col-xs-12 col-md-5 no-gutters">
-                    <div class="col-xs-7" style="padding-let: 0;">
+                    <div class="col-xs-7">
                         <select class="form-control"name="departamento" id="">
                             @foreach ($departamentos as $departamento)
                                 <option value="{{$departamento->id}}">{{$departamento->Nome}}</option>

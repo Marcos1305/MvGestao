@@ -141,8 +141,8 @@
             @endforelse
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nova Venda</a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Todas as Vendas</a>
+              <a href="{{route('nova.venda')}}" class="btn btn-sm btn-info btn-flat pull-left">Nova Venda</a>
+              <a href="{{route('lista.venda')}}" class="btn btn-sm btn-default btn-flat pull-right">Todas as Vendas</a>
             </div>
             <!-- /.box-footer -->
           </div>

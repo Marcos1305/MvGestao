@@ -42,5 +42,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::post('/update-departamento', 'DepartamentoController@updateDepartamento')->name('update.departamento');
     Route::get('/delet-departamento/{id}', 'DepartamentoController@deleteDepartamento')->name('delete.departamento');
 
+    //Vendas
+    Route::get('/nova-venda', 'VendaController@novaVenda')->name('nova.venda');
+    Route::post('/nova-venda', 'VendaController@salvarVenda')->name('post.venda');
+    Route::get('/lista-vendas', 'VendaController@listaVenda')->name('lista.venda');
+
 });
 
+Route::get('/departamento-produtos', 'DepartamentoController@departamentoVenda');

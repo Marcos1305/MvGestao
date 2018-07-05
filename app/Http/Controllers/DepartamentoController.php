@@ -63,4 +63,10 @@ class DepartamentoController extends Controller
         if($delete)
             return redirect()->route('lista.departamento')->with('success', 'Departamento excluido com sucesso!');
     }
+
+    public function departamentoVenda()
+    {
+        $dados = Departamento::with('produtos')->get();
+        return response()->json($dados, 200);
+    }
 }

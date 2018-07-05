@@ -154,6 +154,7 @@ return [
                 [
                     'text' => 'Registrar nova venda',
                     'icon' => 'cart-plus',
+                    'route' => 'nova.venda'
                 ],
                 [
                     'text' => 'Listar suas vendas',
