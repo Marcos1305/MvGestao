@@ -29,7 +29,22 @@ class StoreProdutoPost extends FormRequest
             'codigoProduto'     => 'required|numeric',
             'precoProduto'      => 'required|numeric',
             'descricaoProduto'  => 'required|min:10',
-            'categoria_produto' => 'required|min:1'
+            'categoria_produto' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return[
+            'nomeProduto.required'          => 'Nome do produto é obrigatório',
+            'nomeProduto.min'               => 'Nome do produto deve ter no minimo 4 caracteres.',
+            'nomeProduto.max'               => 'Nome do produto deve ter no máximo 30 caracteres.',
+            'codigoProduto.required'        => 'Código do produto é obrigatório',
+            'codigoProduto.numeric'         => 'Código do produto deve ser numérico',
+            'precoProduto.required'         => 'Preço do produto é obrigatório',
+            'precoProduto.numeric'          => 'Preço do produto deve ser um valor numérico',
+            'descricaoProduto.required'     => 'Descrição do produto é obrigatório',
+            'descricaoProduto.min'          => 'Descrição do produto deve ter no mínimo 10 caracteres',
+            'categoria_produto.required'    => 'O produto deve pertencer no mínimo a 1 departamento'
         ];
     }
     public function validationData()
