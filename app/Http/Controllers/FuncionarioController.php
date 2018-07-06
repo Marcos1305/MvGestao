@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\NovoFuncionarioRequest;
+use App\Models\Funcionario;
+
 class FuncionarioController extends Controller
 {
     public function profile()
@@ -37,6 +40,36 @@ class FuncionarioController extends Controller
 
         if($novaSenha)
             return redirect()->back()->with('success', 'Senha alterada com sucesso!');
+    }
+
+    public function novoFuncionario()
+    {
+        $this->authorize('admin');
+        return view('admin.func.novo');
+    }
+
+    public function salvarFuncionario(NovoFuncionarioRequest $request, Funcionario $funcionario)
+    {
+        $this->authorize('admin');
+        $request->cpf = preg_replace("/[^0-9]/", "", $request->cpf);
+        $funcionario->name              = $request->name;
+        $funcionario->cpf               = $request->cpf;
+        $funcionario->email             = $request->email;
+        $funcionario->cargo             = $request->cargo;
+        $funcionario->DataDeNascimento  = $request->DataDeNascimento;
+        $funcionario->DataDeContratacao = $request->DataDeContratacao;
+        $funcionario->Supervisor        = $request->Supervisor;
+        $funcionario->password          = bcrypt($request->password);
+
+        $save = $funcionario->save();
+        $funcionario->endereco()->create($request->all());
+
+        if(!$save)
+            return redirect()->back()->with('error', 'Erro ao cadadastrar funcionario.');
+
+        return redirect()->back()->with('success', "Funcionario {$funcionario->name} cadastrado com sucesso!");
+
+
     }
 
 }

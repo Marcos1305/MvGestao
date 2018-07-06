@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 
 class VendaController extends Controller
 {
-    protected $venda;
-    public function __construct(venda $venda)
-    {
-        $this->venda = $venda;
-    }
 
     public function novaVenda()
     {
@@ -32,8 +27,15 @@ class VendaController extends Controller
             return redirect()->back()->with('success', 'Sucesso ao salvar venda!');
     }
 
-    public function listaVenda()
+    public function listaVenda(Venda $venda)
     {
-        return view('Admin.vendas.lista');
+        $ultimasVendas = $venda->paginate(10);
+        return view('Admin.vendas.lista', compact('ultimasVendas'));
+    }
+
+    public function vendaFuncionario(Venda $venda){
+        $ultimasVendas = auth()->user()->vendas()->paginate(10);
+        $nome = auth()->user()->name;
+        return view('Admin.vendas.lista', compact('ultimasVendas', 'nome'));
     }
 }

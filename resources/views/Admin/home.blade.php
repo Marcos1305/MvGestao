@@ -15,12 +15,14 @@
     </style>
 @stop
 @section('content')
-<div class="info-box">
-    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-    <div class="info-box-content">
-        <span class="info-box-text">Suas Vendas</span>
-        <span class="info-box-number">{{$vendasFuncLogado}}</span>
-    </div>
+<a href="{{route('funcionario.venda')}}">
+    <div class="info-box">
+        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+        <div class="info-box-content">
+            <span class="info-box-text">Suas Vendas</span>
+            <span class="info-box-number">{{$vendasFuncLogado}}</span>
+        </div>
+</a>
     <!-- /.info-box-content -->
 </div>
 

@@ -54,6 +54,7 @@
                 </div>
             </div>
         </form>
+        <div class="table-responsive">
             <table class="table table-striped tabela table-bordered table-hover">
                 <thead>
                     <td>#</td>
@@ -75,10 +76,11 @@
                     <td data-js="total">Total: </td>
                 </tfoot>
             </table>
+        </div>
         <form method="POST" action="{{route('post.venda')}}">
             @csrf
             <input type="hidden" name="produtos_id" data-js="input_post">
-            <button class="btn btn-primary" data-js="btn-post-ids">Confirmar venda</button>
+            <button class="btn btn-primary" onClick="return confirm('Tem certeza que deseja fechar a venda?');" data-js="btn-post-ids">Confirmar venda</button>
         </form>
     </div>
 @stop

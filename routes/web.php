@@ -46,6 +46,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/nova-venda', 'VendaController@novaVenda')->name('nova.venda');
     Route::post('/nova-venda', 'VendaController@salvarVenda')->name('post.venda');
     Route::get('/lista-vendas', 'VendaController@listaVenda')->name('lista.venda');
+    Route::get('/vendas-funcionario', 'VendaController@vendaFuncionario')->name('funcionario.venda');
+
+    //Funcionario
+    Route::get('/novo-funcionario', 'FuncionarioController@novoFuncionario')->name('novo.funcionario');
+    Route::post('/novo-funcionario', 'FuncionarioController@salvarFuncionario')->name('novo.funcionario');
+    Route::get('/lista-funcionarios', 'FuncionarioController@novoFuncionario')->name('lista.funcionario');
 
 });
 
