@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     //Funcionario
     Route::get('/novo-funcionario', 'FuncionarioController@novoFuncionario')->name('novo.funcionario');
     Route::post('/novo-funcionario', 'FuncionarioController@salvarFuncionario')->name('novo.funcionario');
-    Route::get('/lista-funcionarios', 'FuncionarioController@novoFuncionario')->name('lista.funcionario');
+    Route::get('/lista-funcionarios', 'FuncionarioController@listaFuncionario')->name('lista.funcionario');
 
 });
 

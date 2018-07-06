@@ -69,7 +69,12 @@ class FuncionarioController extends Controller
 
         return redirect()->back()->with('success', "Funcionario {$funcionario->name} cadastrado com sucesso!");
 
-
+    }
+    public function listaFuncionario(Funcionario $funcionario)
+    {
+        $this->authorize('admin');
+        $funcionarios = Funcionario::with('endereco')->get();
+        return view('admin.func.lista', compact('funcionarios'));
     }
 
 }
