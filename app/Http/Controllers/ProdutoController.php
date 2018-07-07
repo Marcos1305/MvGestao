@@ -11,7 +11,7 @@ class ProdutoController extends Controller
     public function novoProduto(Departamento $departamento)
     {
         $departamentos = $departamento->all();
-        return view('admin.produtos.novo', compact('departamentos'));
+        return view('Admin.Produtos.novo', compact('departamentos'));
     }
     public function salvarProduto(StoreProdutoPost $request, Produto $produto)
     {
@@ -29,9 +29,9 @@ class ProdutoController extends Controller
 
     public function listaProdutos(Produto $produto, Departamento $departamento)
     {
-        $produtos = $produto->all();
+        $produtos = $produto->paginate(10);
         $departamentos = $departamento->all();
-        return view('admin.produtos.lista', compact('produtos', 'departamentos'));
+        return view('Admin.Produtos.lista', compact('produtos', 'departamentos'));
     }
 
     public function editarProduto(Produto $produto, $id, Departamento $departamento)
@@ -39,7 +39,7 @@ class ProdutoController extends Controller
         $this->authorize('admin');
         $produto = $produto->find($id);
         $departamentos = $departamento->all();
-        return view('admin.produtos.novo',compact('produto', 'departamentos'));
+        return view('Admin.Produtos.novo',compact('produto', 'departamentos'));
     }
     public function updateProduto(Produto $produto, StoreProdutoPost $request)
     {
@@ -54,7 +54,7 @@ class ProdutoController extends Controller
         $produto->departamentos()->sync($departamentos);
         $save = $produto->save();
         if($save)
-            return redirect()->back()->with('success', 'Produto atualizado com sucesso!');
+            return redirect()->route('lista.produtos')->with('success', 'Produto atualizado com sucesso!');
 
         return redirect()->back()->with('error', 'Erro ao atualizar produto.');
 
@@ -70,10 +70,11 @@ class ProdutoController extends Controller
     }
     public function produtoBusca(Request $request, Departamento $departamento)
     {
+        $dataForm = $request->departamento;
         $departamentos = $departamento->all();
         $departamento = $departamento->find($request->departamento);
-        $produtos = $departamento->produtos;
-        return view('admin.produtos.lista', compact('produtos', 'departamentos'));
+        $produtos = $departamento->produtos()->paginate(10);
+        return view('Admin.Produtos.lista', compact('produtos', 'departamentos', 'dataForm'));
     }
 
 }

@@ -9,7 +9,7 @@ class VendaController extends Controller
 
     public function novaVenda()
     {
-        return view('Admin.vendas.nova');
+        return view('Admin.Vendas.nova');
     }
 
     public function salvarVenda(request $request, Venda $venda)
@@ -30,12 +30,12 @@ class VendaController extends Controller
     public function listaVenda(Venda $venda)
     {
         $ultimasVendas = $venda->paginate(10);
-        return view('Admin.vendas.lista', compact('ultimasVendas'));
+        return view('Admin.Vendas.lista', compact('ultimasVendas'));
     }
 
     public function vendaFuncionario(Venda $venda){
         $ultimasVendas = auth()->user()->vendas()->paginate(10);
         $nome = auth()->user()->name;
-        return view('Admin.vendas.lista', compact('ultimasVendas', 'nome'));
+        return view('Admin.Vendas.lista', compact('ultimasVendas', 'nome'));
     }
 }

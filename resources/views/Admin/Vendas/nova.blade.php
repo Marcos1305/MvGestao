@@ -16,7 +16,7 @@
             background-color: rgba(34, 45, 50, .2);
             color: black;
         }
-        tbody > tr > td {
+        td {
             text-align: center;
         }
         @media screen and (max-width: 767px){

@@ -10,7 +10,7 @@ class DepartamentoController extends Controller
 {
     public function novoDepartamento()
     {
-        return view('admin.categorias.novo');
+        return view('Admin.Categorias.novo');
     }
 
     public function salvarDepartamento(Request $request, Departamento $departamento)
@@ -30,15 +30,15 @@ class DepartamentoController extends Controller
 
     public function listaDepartamento(Departamento $departamento)
     {
-        $departamentos = $departamento->all();
-        return view('admin.categorias.lista', compact('departamentos'));
+        $departamentos = $departamento->paginate(10);
+        return view('Admin.Categorias.lista', compact('departamentos'));
     }
 
     public function editarDepartamento($id, Departamento $departamento)
     {
         $this->authorize('admin');
         $departamento = $departamento->find($id);
-        return view('admin.categorias.novo', compact('departamento'));
+        return view('Admin.Categorias.novo', compact('departamento'));
     }
 
     public function updateDepartamento(request $request, Departamento $departamento)

@@ -12,16 +12,18 @@ class FuncionarioController extends Controller
     public function profile()
     {
         $funcionario = auth()->user();
-        return view('admin.func.profile',compact('funcionario'));
+        return view('Admin.Func.profile',compact('funcionario'));
     }
 
     public function novaSenha()
     {
-        return view('admin.func.newpass');
+        return view('Admin.Func.newpass');
     }
 
     public function salvarSenha(request $request)
     {
+        if(auth()->user()->name == 'Teste')
+            return redirect()->back()->with('error', 'Ação não permitida para usuário teste');
         if(!(Hash::check($request->get('atual'), Auth()->user()->password)))
             return redirect()->back()->with("error", "Senha atual incorreta");
 
@@ -45,7 +47,7 @@ class FuncionarioController extends Controller
     public function novoFuncionario()
     {
         $this->authorize('admin');
-        return view('admin.func.novo');
+        return view('Admin.Func.novo');
     }
 
     public function salvarFuncionario(NovoFuncionarioRequest $request, Funcionario $funcionario)
@@ -74,7 +76,7 @@ class FuncionarioController extends Controller
     {
         $this->authorize('admin');
         $funcionarios = Funcionario::with('endereco')->get();
-        return view('admin.func.lista', compact('funcionarios'));
+        return view('Admin.Func.lista', compact('funcionarios'));
     }
 
 }

@@ -13,7 +13,13 @@
         table > thead{
             text-align: center;
         }
-        td + td {
+        thead > td{
+
+        }
+        thead{
+            background-color: #C4C9CE;
+        }
+        td {
             text-align: center;
         }
         @media screen and (max-width: 767px){
@@ -61,6 +67,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="row">
+            {!!$departamentos->links()!!}
         </div>
     </div>
 @stop

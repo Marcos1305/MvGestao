@@ -1,13 +1,20 @@
 @extends('adminlte::page')
 @section('style')
  <style>
+    .row-paginate{
+        display: flex;
+        justify-content: center;
+    }
     thead{
         background-color: rgba(34, 45, 50, .2);
         color: black;
     }
-    table, thead, tbody, td{
+    table, thead, tbody, td, th{
             border: 0.1rem solid #222D32 !important;
         }
+    td, tr > th{
+        text-align: center;
+    }
  </style>
 @stop
 @section('content_header')
@@ -42,6 +49,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="row-paginate">
+            {{ $ultimasVendas->links() }}
         </div>
     </div>
     @forelse($ultimasVendas as $venda)

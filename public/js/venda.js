@@ -19,7 +19,6 @@ ajax.onreadystatechange = function () {
     }
 }
 function popularDados(dadosJSON) {
-
     dados = dadosJSON;
     $departamentos.innerHTML = '';
     dados.forEach(element => {
@@ -46,18 +45,27 @@ function carregarProdutos(value) {
 $buttonForm.addEventListener('click', function (e) {
     e.preventDefault();
     var $produto = $produtos.value;
+    for (let i = 0; i < dadosJSON.length; i++) {
+        const element = dadosJSON[i].produtos;
+        for (let j = 0; j < element.length; j++) {
+            const elementj = element[j];
+            if(elementj.id == $produto)
+               return preencherTabela(elementj)
+        }
+    }
 
-    dadosJSON.forEach(function (element, index) {
-        element.produtos.forEach(function (element) {
-            if (element.id == $produto) {
-                preencherTabela(element);
-            }
-        })
-    });
 })
 
+// dadosJSON.forEach(function (element, index) {
+//     element.produtos.forEach(function (element) {
+//     if (element.id == $produto) {
+//         return preencherTabela(element);
+//     }
+//     })
+// });
 
 function preencherTabela(element){
+
     ids.push(element.id);
     var tr = document.createElement('tr');
     var tdID = document.createElement('td');
@@ -118,3 +126,4 @@ buttonPostIDs.addEventListener('click', function(e){
         alert('Venda minima de 1 produto');
     }
 });
+
