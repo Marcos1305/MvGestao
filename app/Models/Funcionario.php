@@ -15,4 +15,5 @@ class Funcionario extends Authenticatable
     {
         return $this->hasOne(Endereco::class);
     }
+
 }

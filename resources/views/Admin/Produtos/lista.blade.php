@@ -84,6 +84,7 @@
                             <td>Descrição</td>
                             <td>Preço</td>
                             <td>Departamentos</td>
+                            <td>Estoque</td>
                             @can('admin')
                                 <td>Ações</td>
                             @endcan
@@ -100,6 +101,7 @@
                                             <span class="label label-primary pull-right tag-product">{{$departamento->Nome}}</span>
                                         @endforeach
                                     </td>
+                                    <td class="{{$produto->estoque >= 10 ? 'success' : 'warning'}}">{{$produto->estoque}}</td>
                                     @can('admin')
                                         <td>
                                             <a href="{{route('editar.produtos', $produto->id)}}"class="btn btn-warning btn-sm">Editar Produto</a>
@@ -115,7 +117,7 @@
         </div>
         <div class="row">
             @if(isset($dataForm))
-                {!! $produtos->appends($dataForm)->links()!!}
+                {{ $produtos->appends($dataForm)->render() }}
             @else
                 {!! $produtos->links() !!}
             @endif

@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/produto/{id}/editar', 'ProdutoController@editarProduto')->name('editar.produtos');
     Route::get('/produto/{id}/excluir', 'ProdutoController@excluirProduto')->name('excluir.produtos');
     Route::post('/produto/update', 'ProdutoController@updateProduto')->name('update.produtos');
-    Route::post('/produto/busca/', 'ProdutoController@produtoBusca')->name('busca.produtos');
+    Route::any('/produto/busca/', 'ProdutoController@produtoBusca')->name('busca.produtos');
 
     //Departamentos
     Route::get('/novo-departamento', 'DepartamentoController@novoDepartamento')->name('novo.departamento');

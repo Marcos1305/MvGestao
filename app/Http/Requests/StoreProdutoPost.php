@@ -29,7 +29,8 @@ class StoreProdutoPost extends FormRequest
             'codigoProduto'     => 'required|numeric',
             'precoProduto'      => 'required|numeric',
             'descricaoProduto'  => 'required|min:10',
-            'categoria_produto' => 'required'
+            'categoria_produto' => 'required',
+            'estoque'           => 'required|numeric|min:0'
         ];
     }
     public function messages()
@@ -44,7 +45,10 @@ class StoreProdutoPost extends FormRequest
             'precoProduto.numeric'          => 'Preço do produto deve ser um valor numérico',
             'descricaoProduto.required'     => 'Descrição do produto é obrigatório',
             'descricaoProduto.min'          => 'Descrição do produto deve ter no mínimo 10 caracteres',
-            'categoria_produto.required'    => 'O produto deve pertencer no mínimo a 1 departamento'
+            'categoria_produto.required'    => 'O produto deve pertencer no mínimo a 1 departamento',
+            'estoque.required'              => 'O campo estoque é obrigatório.',
+            'estoque.numeric'               => 'O campo estoque deve ser um valor numérico',
+            'estoque.min'                   => 'O campo estoque não pode ser valor negativo. '
         ];
     }
     public function validationData()

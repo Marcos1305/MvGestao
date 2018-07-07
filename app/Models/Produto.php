@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-    protected $fillable = ['nome', 'descricao', 'preco', 'CodBarra'];
+    protected $fillable = ['nome', 'descricao', 'preco', 'CodBarra', 'estoque'];
     public function ultimosProdutos()
     {
         return $this->orderBy('id', 'desc')->take(4)->get();

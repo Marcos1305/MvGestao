@@ -25,6 +25,7 @@
 @stop
 @section('content_header')
     @if(isset($produto))
+    <a href="{{route('lista.produtos')}}" class="btn btn-info">Voltar a lista</a>
          <div class="container text-center">
             <h2>Datalhes produto <strong>{{$produto->nome}}</strong></h2>
         </div>
@@ -56,10 +57,16 @@
                     <input type="text" name="nomeProduto" id="" value="{{$produto->nome or old('nomeProduto')}} "class="form-control">
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="codigoProduto">Código</label>
                         <div class="form-group">
                             <input type="number" name="codigoProduto" id="" value="{{$produto->CodBarra or old('codigoProduto')}}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="invetario">Estoque</label>
+                            <input type="number"   name="estoque" value="{{$produto->estoque or old('inventario')}}" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">

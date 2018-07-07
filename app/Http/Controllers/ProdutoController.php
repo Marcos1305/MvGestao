@@ -5,6 +5,7 @@ use App\Models\Departamento;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProdutoPost;
 use App\Models\Produto;
+use App\Models\Inventario;
 
 class ProdutoController extends Controller
 {
@@ -15,14 +16,18 @@ class ProdutoController extends Controller
     }
     public function salvarProduto(StoreProdutoPost $request, Produto $produto)
     {
+
         $novoProduto = $produto->create([
             'nome'      => $request->nomeProduto,
             'descricao' => $request->descricaoProduto,
-            'preco'     =>  $request->precoProduto,
+            'preco'     => $request->precoProduto,
             'CodBarra'  => $request->codigoProduto,
+            'estoque'   => $request->estoque
         ]);
         $departamentos = $request->categoria_produto = explode(',', $request->categoria_produto);
         $novoProduto->departamentos()->sync($departamentos);
+
+        dd($novoProduto);
         if($novoProduto)
             return redirect()->back()->with('success', "Produto {$request->nomeProduto} inserido com sucesso!");
     }
@@ -54,6 +59,7 @@ class ProdutoController extends Controller
         $produto->descricao = $request->descricaoProduto;
         $produto->preco = $request->precoProduto;
         $produto->CodBarra = $request->codigoProduto;
+        $produto->estoque = $request->estoque;
 
         $departamentos = $request->categoria_produto = explode(',', $request->categoria_produto);
         $produto->departamentos()->sync($departamentos);
@@ -75,10 +81,11 @@ class ProdutoController extends Controller
     }
     public function produtoBusca(Request $request, Departamento $departamento)
     {
-        $dataForm = $request->departamento;
+        $dataForm = \Request::except('_token');
         $departamentos = $departamento->all();
         $departamento = $departamento->find($request->departamento);
         $produtos = $departamento->produtos()->paginate(10);
+
         return view('Admin.Produtos.lista', compact('produtos', 'departamentos', 'dataForm'));
     }
 
