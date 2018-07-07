@@ -85,7 +85,7 @@
                         <a data-js="btn-categoria" class="btn  btn-primary">Adicionar departamento</a>
                     </div>
                 </div>
-                <input type="hidden" data-js="categoria_produto" name="categoria_produto">
+                <input type="hidden" data-js="categoria_produto" name="categoria_produto" value="{{ $ids or old('categoria_produto')}}">
                 <div class="form-group">
                     <label for="">Categorias adicionadas</label>
                     <div class="col-xs-12 box-tags" data-js="categoria-box">

@@ -38,8 +38,13 @@ class ProdutoController extends Controller
     {
         $this->authorize('admin');
         $produto = $produto->find($id);
+        $ids = [];
+        foreach($produto->departamentos as $departamento){
+            $ids[] =  $departamento->id;
+        };
+        $ids = implode(',', $ids);
         $departamentos = $departamento->all();
-        return view('Admin.Produtos.novo',compact('produto', 'departamentos'));
+        return view('Admin.Produtos.novo',compact('produto', 'departamentos', 'ids'));
     }
     public function updateProduto(Produto $produto, StoreProdutoPost $request)
     {

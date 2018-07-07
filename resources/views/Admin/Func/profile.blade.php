@@ -2,7 +2,6 @@
     .row{
         display:flex;
         justify-content: center;
-        justify-items: center;
     }
     input{
         text-align: center;

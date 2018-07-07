@@ -4,6 +4,15 @@
     table, thead, tbody, td, th{
     border: 0.1rem solid #222D32 !important;
     }
+    thead{
+        background-color: rgba(193,201,206);
+    }
+    th, td{
+        text-align: center !important;
+    }
+    .btn-secondary{
+        margin-top: 0.5rem;
+    }
     </style>
 @stop
 @section('content_header')
@@ -78,7 +87,7 @@
                             @endforeach
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                          <button type="button" class="btn btn-secondary " data-dismiss="modal">Fechar</button>
                         </div>
                     </div>
                 </div>
