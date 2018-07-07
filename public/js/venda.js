@@ -10,7 +10,7 @@ var totalForm = document.querySelector('[data-js="total"]');
 var dadosJSON;
 var dados;
 var ids = [];
-ajax.open('GET', 'http://localhost:8080/departamento-produtos');
+ajax.open('GET', 'http://mvgestao.herokuapp.com/departamento-produtos');
 ajax.send();
 ajax.onreadystatechange = function () {
     if (ajax.readyState === 4) {
@@ -55,14 +55,6 @@ $buttonForm.addEventListener('click', function (e) {
     }
 
 })
-
-// dadosJSON.forEach(function (element, index) {
-//     element.produtos.forEach(function (element) {
-//     if (element.id == $produto) {
-//         return preencherTabela(element);
-//     }
-//     })
-// });
 
 function preencherTabela(element){
 
