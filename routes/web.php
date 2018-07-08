@@ -11,7 +11,6 @@
 |
 */
 
-Auth::routes();
 Route::get('/', function(){
     return redirect()->route('admin.index');
 })->name('index');

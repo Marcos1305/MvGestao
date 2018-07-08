@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gestão Comércio</title>
     <link rel="stylesheet" href="css/app.css">
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon">
 </head>
 <body class="bg-light">
     <div class="container">

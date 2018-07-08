@@ -44,7 +44,7 @@
                 @foreach ($ultimosProdutos as $produto )
                     <li class="item">
                         <div class="product-info">
-                        <a href="javascript:void(0)" class="product-title">{{$produto->nome}}
+                        <a href="{{route('editar.produtos', $produto->id)}}" class="product-title">{{$produto->nome}}
                         <span class="label label-{{$produto->preco > 500 ? 'warning' : 'success'}} pull-right">R$ {{$produto->preco}}</span></a>
                         @foreach ($produto->departamentos as $departamento)
                             <span class="label label-primary pull-right tag-product">{{$departamento->Nome}}</span>

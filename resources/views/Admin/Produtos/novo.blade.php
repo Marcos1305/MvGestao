@@ -1,5 +1,9 @@
 @extends('adminlte::page')
-@section('title', 'Novo Produto')
+@if(isset($produto))
+    @section('title', "Detalhes $produto->nome")
+@else
+    @section('title', 'Novo Produto')
+@endif
 @section('style')
 <style>
     .row{
