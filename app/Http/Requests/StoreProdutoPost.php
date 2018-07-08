@@ -28,7 +28,7 @@ class StoreProdutoPost extends FormRequest
             'nomeProduto'       => 'required|string|min:4|max:30',
             'codigoProduto'     => 'required|numeric',
             'precoProduto'      => 'required|numeric',
-            'descricaoProduto'  => 'required|min:10',
+            'descricaoProduto'  => 'required',
             'categoria_produto' => 'required',
             'estoque'           => 'required|numeric|min:0'
         ];
