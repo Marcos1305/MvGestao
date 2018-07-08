@@ -52,6 +52,8 @@ class FuncionarioController extends Controller
 
     public function salvarFuncionario(NovoFuncionarioRequest $request, Funcionario $funcionario)
     {
+        if(auth()->user()->name == 'Teste')
+            return redirect()->back()->with('error', 'Ação não permitida para usuário teste');
         $this->authorize('admin');
         $request->cpf = preg_replace("/[^0-9]/", "", $request->cpf);
         $funcionario->name              = $request->name;
