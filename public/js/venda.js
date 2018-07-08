@@ -22,9 +22,10 @@ function popularDados(dadosJSON) {
     dados = dadosJSON;
     $departamentos.innerHTML = '';
     dados.forEach(element => {
-        $departamentos.innerHTML += '<option value=' + '"' + element.id + '"' + '>' + element.Nome + '</option>';
+        if(element.produtos.length > 0)
+            $departamentos.innerHTML += '<option value=' + '"' + element.id + '"' + '>' + element.Nome + '</option>';
     });
-    $departamentos.innerHTML += '<option selected>Escolha o departamento</option>';
+    $departamentos.innerHTML += '<option selected disabled>Escolha o departamento</option>';
 }
 $departamentos.addEventListener('change', function () {
 
@@ -37,7 +38,11 @@ function carregarProdutos(value) {
     dadosJSON.forEach(function (element, index) {
         if (element.id == value) {
             element.produtos.forEach(function (element) {
-                $produtos.innerHTML += '<option value=' + '"' + element.id + '"' + '>' + 'Código: ' + element.CodBarra + ' ' +  element.nome + '</option>';
+                if(element.estoque <= 0){
+                    $produtos.innerHTML += '<option value=' + '"' + element.id + '"' + '>' + 'Código: ' + element.CodBarra + ' ' +  element.nome + ' -- SEM ESTOQUE --'+ '</option>';
+                }else{
+                    $produtos.innerHTML += '<option value=' + '"' + element.id + '"' + '>' + 'Código: ' + element.CodBarra + ' ' +  element.nome + '</option>';
+                }
             });
         }
     });
@@ -49,8 +54,13 @@ $buttonForm.addEventListener('click', function (e) {
         const element = dadosJSON[i].produtos;
         for (let j = 0; j < element.length; j++) {
             const elementj = element[j];
-            if(elementj.id == $produto)
-               return preencherTabela(elementj)
+            if(elementj.id == $produto){
+                if(elementj.estoque == 0){
+                    return alert('Produto sem estoque.');
+                }
+                elementj.estoque -= 1;
+                return preencherTabela(elementj)
+            }
         }
     }
 
@@ -107,6 +117,15 @@ function removerProdutoTabela(button){
             ids.splice(index, 1);
         }
     });
+    for (let i = 0; i < dadosJSON.length; i++) {
+        const element = dadosJSON[i].produtos;
+        for (let j = 0; j < element.length; j++) {
+            const elementj = element[j];
+            if(elementj.id == id){
+                elementj.estoque++;
+            }
+        }
+    }
     row.parentNode.removeChild(row);
     calcularTotal();
 }
@@ -115,7 +134,9 @@ buttonPostIDs.addEventListener('click', function(e){
     inputIDPost.value = ids;
     if(ids.length === 0){
         e.preventDefault();
-        alert('Venda minima de 1 produto');
+        alert('Venda minima de 1 produto.');
+    }else{
+        return confirm('Tem certeza que deseja fechar a Venda ?');
     }
 });
 

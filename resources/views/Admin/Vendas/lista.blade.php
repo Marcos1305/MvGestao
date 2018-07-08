@@ -34,6 +34,7 @@
                             <th>ID</th>
                             <th>Produtos</th>
                             <th>Vendedor</th>
+                            <th>Data e Hora</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@
                                 <td>{{$venda->id}}</td>
                                 <td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalProdutos{{$venda->id}}">Produtos</a></td>
                                 <td>{{$venda->funcionario->name}}</td>
+                                <td>{{date('d/m/y H:i:s', strtotime($venda->created_at))}}</td>
                             </tr>
                         @empty
                             <p>Nenhuma venda registrada!</p>

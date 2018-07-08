@@ -36,8 +36,9 @@
 @section('content')
     <div class="container">
         <form action="">
-            <h4>Adicionar produtos a venda</h4>
             @include('Admin.layouts.errors')
+            <h4>Adicionar produtos a venda</h4>
+            <span>Selecione o departamento</span>
             <div class="row search">
                 <div class="col-xs-12  no-gutters">
                     <div class="col-xs-12 col-md-5">
@@ -80,7 +81,7 @@
         <form method="POST" action="{{route('post.venda')}}">
             @csrf
             <input type="hidden" name="produtos_id" data-js="input_post">
-            <button class="btn btn-primary" onClick="return confirm('Tem certeza que deseja fechar a venda?');" data-js="btn-post-ids">Confirmar venda</button>
+            <button class="btn btn-primary"  data-js="btn-post-ids">Confirmar venda</button>
         </form>
     </div>
 @stop

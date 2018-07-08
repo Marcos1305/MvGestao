@@ -17,7 +17,6 @@
     }
 
     function popularInputs(values){
-        console.log(values)
         $rua.value = values.logradouro;
         $bairro.value = values.bairro;
         $cidade.value = values.localidade;

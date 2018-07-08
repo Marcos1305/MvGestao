@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Venda;
 use Illuminate\Http\Request;
-
+use App\Models\Produto;
 class VendaController extends Controller
 {
 
@@ -18,6 +18,15 @@ class VendaController extends Controller
             'produtos_id' => 'required|min:1'
         ]);
         $produtos = explode(',', $request->produtos_id);
+        foreach($produtos as $produto){
+            $produtoVenda = Produto::find($produto);
+            if($produtoVenda->estoque === 0){
+                return redirect()->back()->with('error', "Produto {$produtoVenda->nome} com estoque insuficiente.");
+            }
+            $produtoVenda->estoque -= 1;
+            $produtoVenda->save();
+
+        }
         $venda->funcionario_id = auth()->user()->id;
         $save = $venda->save();
         foreach($produtos as $produto){
