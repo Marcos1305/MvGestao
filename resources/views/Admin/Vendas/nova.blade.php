@@ -37,7 +37,7 @@
     <div class="container">
         <form action="">
             <h4>Adicionar produtos a venda</h4>
-            @include('admin.layouts.errors')
+            @include('Admin.layouts.errors')
             <div class="row search">
                 <div class="col-xs-12  no-gutters">
                     <div class="col-xs-12 col-md-5">
