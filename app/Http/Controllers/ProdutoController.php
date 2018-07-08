@@ -27,7 +27,6 @@ class ProdutoController extends Controller
         $departamentos = $request->categoria_produto = explode(',', $request->categoria_produto);
         $novoProduto->departamentos()->sync($departamentos);
 
-        dd($novoProduto);
         if($novoProduto)
             return redirect()->back()->with('success', "Produto {$request->nomeProduto} inserido com sucesso!");
     }
