@@ -70,7 +70,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="invetario">Estoque</label>
-                            <input type="number"   name="estoque" value="{{$produto->estoque or old('estoque')}}" class="form-control">
+                            <input type="number"  min="0" name="estoque" value="{{$produto->estoque or old('estoque')}}" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6">

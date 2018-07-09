@@ -43,9 +43,8 @@
 @section('content_header')
     <div class="container">
         <div class="row text-center">
-                <h2>Lista de Produtos</h2>
+            <h2>Lista de Produtos</h2>
         </div>
-
     </div>
 @stop
 @section('content')
@@ -101,7 +100,7 @@
                                             <span class="label label-primary pull-right tag-product">{{$departamento->Nome}}</span>
                                         @endforeach
                                     </td>
-                                    <td class="{{$produto->estoque >= 10 ? 'success' : 'warning'}}">{{$produto->estoque}}</td>
+                                    <td class="{{$produto->estoque >= 10 ? 'bg-success' : 'bg-warning'}}">{{$produto->estoque}}</td>
                                     @can('admin')
                                         <td>
                                             <a href="{{route('editar.produtos', $produto->id)}}"class="btn btn-warning btn-sm">Editar Produto</a>

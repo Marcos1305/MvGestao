@@ -10,16 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function(){
     return redirect()->route('admin.index');
 })->name('index');
+
+Route::get('/register', function(){
+    return redirect()->route('login')->with('error', 'Função de cadastro desativado.');
+});
 
 Route::get('/login', 'HomeController@login')->name('login');
 Route::post('login', 'HomeController@postLogin')->name('login.post');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     route::get('/', 'AdminController@index')->name('admin.index');
+    Route::get('/logout', 'LoginController@logout');
     route::get('/profile', 'FuncionarioController@profile')->name('func.profile');
     Route::get('/nova-senha', 'FuncionarioController@novaSenha')->name('func.senha');
     Route::post('/salvar-senha', 'FuncionarioController@salvarsenha')->name('func.salvarsenha');
