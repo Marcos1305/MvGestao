@@ -52,7 +52,7 @@ class NovoFuncionarioRequest extends FormRequest
             'cargo.string'                  =>  'O campo cargo deve ser um conjunto de caracteres',
             'email.required'                =>  'O campo email é obrigatório',
             'email.email'                   =>  'O campo email deve conter um email válido',
-            'DataDeNascimento'              =>  'O campo Data de Nascimento é obrigatório',
+            'DataDeNascimento.required'     =>  'O campo Data de Nascimento é obrigatório',
             'DataDeNascimento.date'         =>  'O campo Data de Nascimento deve conter uma data válida',
             'DataDeContratacao.date'        =>  'O campo Data de Contratação deve conter uma data válida',
             'DataDeContratacao.required'    =>  'O campo Data de Contratação é obrigatório',
